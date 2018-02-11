@@ -1,5 +1,16 @@
 # How-to-use
 
+Setting up Sublime
+Open Terminal and
+
+For Sublime-Text-2: sudo add-apt-repository ppa:webupd8team/sublime-text-2 && sudo apt-get update && sudo apt-get install sublime-text
+
+For Sublime-Text-3: sudo add-apt-repository ppa:webupd8team/sublime-text-3 && sudo apt-get update && sudo apt-get install sublime-text-installer
+
+Once you have Sublime Text installed you can launch it from the terminal with: subl or sublime-text 
+------------------------------------------------------------------------------------------------------------------------
+
+
 Installing Git
 https://git-scm.com/downloads
 
