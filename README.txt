@@ -1,20 +1,26 @@
 # How-to-use
-
+-------------------------------------------------------------------------------------------------------------------------
 Setting up Sublime
-Open Terminal and
 
+Open Terminal and
 For Sublime-Text-2: sudo add-apt-repository ppa:webupd8team/sublime-text-2 && sudo apt-get update && sudo apt-get install sublime-text
 
 For Sublime-Text-3: sudo add-apt-repository ppa:webupd8team/sublime-text-3 && sudo apt-get update && sudo apt-get install sublime-text-installer
 
-Once you have Sublime Text installed you can launch it from the terminal with: subl or sublime-text 
-------------------------------------------------------------------------------------------------------------------------
-
-
+Can launch sublime from the terminal with: subl or sublime-text 
+--------------------------------------------------------------------------------------------------------------------------
 Installing Git
 https://git-scm.com/downloads
-
+--------------------------------------------------------------------------------------------------------------------------
+Configuring Git
 git config --global credential.helper 'cache --timeout=3600': Set the cache to timeout after 1 hour (setting is in seconds)
+git config --global color.ui auto: change text colors for insertion/deletion of code
+git config --global core.editor "subl -n -w": use sublime to edit Git Edit Info (ex. commit message)
+Put 1:git-prompt.sh 2:git-completion.bash 3:.bashrc files in home directory and run below two commands: configure terminal for 														git purpose
+git config --global push.default upstream
+git config --global merge.conflictstyle diff3
+--------------------------------------------------------------------------------------------------------------------------
+
 git remote add origin <github repository address>: add one repository on github
 git remote: show existing repository
 git remote -v: show more info (fetch & push)
@@ -36,6 +42,7 @@ git status: show which files in working direcotry have been modified/added to st
 git add <filename>: add <filename> to staging area
 git commit: add what's in staging area to repository (upload) 
 git log: show hisotry(versions) of repository (press q to quit)
+git log --stat: gives statistics about which files were affected
 git clone <https://...>: clone a github page
 git config --global color.ui auto: get colored diff output
 
