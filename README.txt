@@ -16,7 +16,9 @@ Configuring Git
 git config --global credential.helper 'cache --timeout=3600': Set the cache to timeout after 1 hour (setting is in seconds)
 git config --global color.ui auto: change text colors for insertion/deletion of code
 git config --global core.editor "subl -n -w": use sublime to edit Git Edit Info (ex. commit message)
-Put 1:git-prompt.sh 2:git-completion.bash 3:.bashrc files in home directory and run below two commands: configure terminal for 														git purpose
+Put 1:git-prompt.sh 2:git-completion.bash 3:.bashrc files in home directory and run below two commands
+*If .bashrc file already exists in home directory, copy and paste at the end of the existing .bashrc file
+: configure terminal for git purpose
 git config --global push.default upstream
 git config --global merge.conflictstyle diff3
 --------------------------------------------------------------------------------------------------------------------------
