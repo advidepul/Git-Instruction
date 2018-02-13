@@ -33,6 +33,7 @@ Initializing Git & Uploading files to the Repository
 7. git log: show hisotry(versions) of repository (press q to quit)
 * git log --stat: gives statistics about which files were affected
 * git log -n 1: show most recent commit(head)'s log 
+* git ls-tree --full-tree -r HEAD: lists all of the already committed files being tracked by your git repo
 
 Removing Files from Repository
 1. git rm <fileName>: will remove <fileName> from both staging area and working directory
@@ -53,29 +54,49 @@ Making a Branch & Merging Branches
 * git checkout -b <branchName>: create and switch to the <branchName>
 4. Add & Commit new files
 * git log --graph --oneline <branch name> <branch name> ... <branch name>: shows log for entire branch in timeline
-5. git merge <branchName1> <branchName2>: merge branchName2 to branchName1
+5. git merge <branchName1> <branchName2>: merge branchName2 and branchName1 (if you are on branchName1, branchName2 will be merged to branchName1)
 6. git show <ID number>: show diff btwn the ID number with its parent 
 7. git branch -d <branchName>: delete <branchName> branch (only the label, not the commits)
-* If merge conflict occurs (same file is modified by different branches) branch name will contain "+|MERGING". 
+* If merge conflict occurs (same file is modified by different branches) branch goes to merge mode ("<branchName>+|MERGING") 
    --> Resolve the file with conflict --> add it to staging area and commit. 
 ---------------------------------------------------------------------------------------------
-
+Pushing / Pulling Remote
 1. git remote: show existing remote repository
-2. git remote add <remote> <github repository address>: add a remote repository named <remote> (usually 'origin') on GitHub
-3. git remote -v: show more info (where to fetch & push) about remotes 
-git push <remote> <branch>: push <branch> to <remote> --> upload branch on remote
-git pull <remote> <branch>: download (update) branch from remote
-git fetch origin: latest origin (github) will be updated on local (git)
-fork: fork other person's github page to your github page
-
-Adding a Repository to Github:
-Initialize a repository on Github
-git remote add origin <github repository address>
-upload files on local (git)
-git push origin master
+2. Go to your github page and create empty repository
+3. git remote add <remote> <github repository address>: create a remote, named <remote> (usually 'origin'), pointing to the github repository (remote is like a bridge between local and github: download github repo as remote so you can work on it offline)
+4. git remote -v: show more info (where to fetch & push) about remotes 
+5. git push <remote> <branch>: push <branch> to <remote> --> upload branch to GitHub
+* Need GitHub ID & Password --> see Configuring Git #1 to save the password
+6. git pull <remote> <branch>: download (update) branch from remote
+* git pull origin master == git fetch origin & git merge master origin/master
+---------------------------------------------------------------------------------------------
+Forking & Cloning Remote
+Fork: copy one(other's) github page to other(your) github page
+Clone: copy one github page to your local | copy local to local
+1. Go to github repository you want to copy
+2. Click Fork button (the repo has been copied to your github page now)
+3. Go to folder where you wish to create working directory
+4. git clone <github repository address>: create git folder (copied from github) 
+* Cloning automatically sets up a remote pointing to the repository on github
+5. Go to the working directory 
+6. git remote -v 
+7. If the person who cloned the repo needs access to push to the repo, go to github repo --> settings --> collaborators --> add the github username
+8. git branch -a
+9. git fetch <remote(origin)>: update <remote> (origin) master with the content of github master 
+**remote and local does not need internet access (unless you push the changes)
+**When committing local master, remote master and github master won't be updated
+**When github master changes, remote master and github master are not aware of the changes
+**After fetch, remote master will be synced with github master but local master won't be.
+* git pull origin master == git fetch origin & git merge master origin/master
+10. git merge master origin/master
 --------------------------------------------------------------------------------------------------
-
-
-git clone <https://...>: clone a github page
-
-
+Pull Request
+After creating a branch of clonned repo:
+1. Make a change and add/commit. 
+2. git push <remote(origin)> <branchName>: upload the branch on githup repo
+3. Go to githup repo --> branch page
+4. Click Pull Request button
+5. Edit to which repo(base fork) you want to merge the branch and confirm
+6. After applying changes from local and git push <remote> <branchName> will update the pull request 
+*** Always update Master through pull request (don't merge Master with branch on local)
+--------------------------------------------------------------------------------------------------
